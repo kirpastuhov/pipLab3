@@ -1,0 +1,62 @@
+
+body {
+
+    color: indianred;
+    background-color: #3c3d3e;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+body,h4
+{
+
+    border: 1px;
+    font-family: monospace;
+    font-size: 19px ;
+}
+.row{
+    width: 100%;
+    padding-right: 0;
+}
+.col-sm
+{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    width: 35%;
+    padding: 0;
+    margin-top: 15px;
+    margin-right: 15px;
+
+}
+
+#canvas
+{
+    width: 43%;
+    /*margin: 30px;*/
+    margin-left: 30px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.sharp {
+    border-radius: 0;
+}
+.btn-submit {
+    color: #dddddd;
+    font-size: 19px ;
+    text-decoration: none;
+    padding: 10px 10px;
+    /* background-color: LightSlateGray; */
+    background-color: rgba(60, 61, 62, 0.7);
+    border: 1px #dddddd;
+}
+.btn-submit:hover {
+    /* background-color: SlateGrey;  */
+    color: #dddddd;
+    text-decoration: none;
+    background-color: rgba(75, 76, 77, 0.7);
+}
+.btn-submit:active {
+    background-color: SlateGrey; /* Цвет кнопки при нажатии */
+}

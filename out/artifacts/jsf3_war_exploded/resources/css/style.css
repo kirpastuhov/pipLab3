@@ -1,0 +1,128 @@
+html, body {
+    font-size: 16px;
+    background-color: #3c3d3e;
+    color: red;
+}
+
+.row{
+    width: 100%;
+    padding-right: 0;
+}
+.col-sm
+{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+    width: 35%;
+    padding: 0;
+    margin-top: 15px;
+    margin-right: 15px;
+
+}
+
+div.borderedDiv {
+    border: 2px #dddddd;
+    text-align: center;
+}
+div#header {
+    background-color: #EEEEEE;
+    transition: background-color 3s ease;
+    font: bold 24px monospace;
+    min-width: 200px;
+    width: 10%;
+    margin: auto;
+    /*color: black;*/
+}
+div.centered {
+    margin: 0 auto;
+    text-align: center;
+}
+div#clock {
+    font-size: 40px;
+    margin: 10px auto;
+    display: table;
+    width: 150px;
+}
+div#header:hover {
+    background-color: white;
+    transition: background-color 10s ease;
+}
+div#main {
+    color: #dddddd;
+    min-width: 1120px;
+}
+div.graph {
+    width: 48%;
+    margin: 5px;
+    float:left;
+}
+div.table {
+    width: 300px;
+    margin: 5px;
+    float:left;
+}
+div.input {
+    margin: 5px;
+    float:left;
+    width: 290px;
+}
+div#image {
+    float: right;
+}
+div#input {
+    display: inline-block;
+    float: none;
+    width: 265px;
+    padding: 10px;
+}
+div#link {
+    width: 100px;
+    margin: 0 105px;
+}
+div#alert {
+    margin-top: 10px;
+    padding: 0.5%;
+    display: inline-block;
+    float: none;
+    visibility: hidden;
+    width: 276px;
+}
+table#data {
+    border-collapse: collapse;
+}
+table#data td, th{
+    border: 2px #dddddd;
+    padding: 5px;
+    text-align: center;
+}
+
+#canvas
+{
+    width: 43%;
+    margin-left: 30px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.sharp {
+    border-radius: 0;
+}
+.btn-submit {
+    color: #dddddd;
+    font-size: 19px ;
+    text-decoration: none;
+    padding: 10px 10px;
+    /* background-color: LightSlateGray; */
+    background-color: rgba(60, 61, 62, 0.7);
+    border: 1px #dddddd;
+}
+.btn-submit:hover {
+    /* background-color: SlateGrey;  */
+    color: #dddddd;
+    text-decoration: none;
+    background-color: rgba(75, 76, 77, 0.7);
+}
+.btn-submit:active {
+    background-color: SlateGrey; /* Цвет кнопки при нажатии */
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ace="http://www.icefaces.org/icefaces/components"
+>
+
+
+<h:body style="background-color: #3c3d3e;">
+    <ui:composition template="/FaceletTemplates/mainPage.xhtml">
+        <ui:define name="content">
+            <canvas id="myCanvas" width="500" height="500"
+                    style="border:1px solid #dddddd; background-color: rgba(75, 76, 77,0.7);"/>
+        </ui:define>
+        <ui:define name="input">
+            <div class="row">
+                <div class="col-sm">
+                    <h:form onsubmit="return false;" id="form">
+                        <div class="row disable-selection">
+                            <div class="form-group col-sm" style="text-align: center">
+                                <label>X</label>
+                                <h:selectOneMenu class="form-control" value="#{InputBean.x}" var="val" varStatus="stat"
+                                                 id="inputX" converter="javax.faces.Integer">
+                                    <f:selectItems class="form-control" value="#{InputBean.XValues}"
+                                                   p:id="x${stat.index}"
+                                                   p:name="form:x${stat.index}" readonly="true"
+                                                   onchange="checkSelection(this);"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group col-sm" style="text-align: center">
+                                <label>Y</label>
+                                <h:inputText id="inputY" value="#{InputBean.y}" onchange="updateY();"
+                                             class="form-control is-invalid"
+                                             p:placeholder="(-5, 3)">
+                                    <f:converter converterId="javax.faces.Double"/>
+                                    <f:validateDoubleRange minimum="-5" maximum="3"/>
+                                </h:inputText>
+                            </div>
+                            <div class="form-group col-sm" style="text-align: center">
+                                <label> R</label>
+                                <div class="form-group" style="text-align: center">
+
+                                    <h:outputText value="#{InputBean.r / 10}" id="input_R"/>
+                                    <ace:sliderEntry stepPercent="1" min="20" max="50" showLabels="false"
+                                                     value="#{InputBean.r}" length="200px" id="inputR">
+                                        <ace:ajax render="input_R" event="slideEnd" execute="inputR"
+                                                  onSuccess="updateRadiusValue(); drawChart();"/>
+                                    </ace:sliderEntry>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center" class="disable-selection">
+                            <h:commandButton class="btn-submit sharp" id="submitButton"
+                                             action="#{ResultsController.AddResult(InputBean)}"
+                                             style="border:1px solid #dddddd;" value="Check the point"/>
+                        </div>
+                    </h:form>
+                </div>
+                <ui:debug/>
+            </div>
+        </ui:define>
+        <ui:define name="results">
+            <h:dataTable id="data" value="#{ResultsController.hitsData}" var="o"
+                         columnClasses="dataX,dataY,dataR,dataRes,dataTime">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    #{o.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    #{o.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    #{o.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Result</f:facet>
+                    #{o.pointInArea ? "In area" : "Not in area"}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time</f:facet>
+                    #{o.formattedTime}
+                </h:column>
+            </h:dataTable>
+        </ui:define>
+        <div style="text-align: center" class="disable-selection">
+        <ui:define name="link">
+            <h:form>
+
+                    <h:commandButton class="btn-submit sharp" id="backButton" action="startPage"
+                                     style="border:1px solid #dddddd;" value="Start page"/>
+
+            </h:form>
+        </ui:define>
+        </div>
+    </ui:composition>
+</h:body>
+</html>
