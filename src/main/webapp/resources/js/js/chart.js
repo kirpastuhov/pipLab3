@@ -10,8 +10,7 @@ function updateRadiusValue() {
     // document.getElementById("form:hidden_x").value = radius;
 
     _radius = Number(document.getElementById('form:input_R').innerText);
-    // console.log("radius:", _radius);
-
+    _size = Number(_chart.attr("width").replace("px", ""));
 }
 
 
@@ -24,6 +23,7 @@ function updateAndDraw() {
 
     updateRadiusValue();
     drawChart();
+    drawHistory();
 
 
     _chart.click(e => {
@@ -43,8 +43,13 @@ function chartClick(e) {
     console.log("e.pageX = ", e.pageX);
     console.log("e.pageY = ", e.pageY);
 
+
+
     const chart_x = (x - 250) * 14 / 500;
     const chart_y = (250 - y) * 14 / 500;
+
+    document.getElementById("hidden_x").value = chart_x;
+    document.getElementById("hidden_y").value = chart_y;
 
     console.log("x2 = ", chart_x);
     console.log("y2 = ", chart_y);
