@@ -2,6 +2,7 @@ function drawChart() {
     drawAxis();
     drawAxisNames();
     drawAxisValues();
+    drawHistory();
 }
 
 
@@ -10,8 +11,9 @@ function drawAxis() {
     let _size = Number(_chart.attr("width").replace("px", ""));
     let center = _size / 2;
     let _radius = Number(document.getElementById('form:input_R').innerText);
-    console.log("radius:", _radius);
+
     let radius = _size / 14 * _radius;
+    // let radius = _radius;
 
 
     _chart.drawRect({

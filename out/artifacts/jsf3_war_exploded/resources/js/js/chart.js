@@ -19,11 +19,12 @@ function updateAndDraw() {
     $("#input_R").change(() => {
         updateRadiusValue();
         drawChart();
+        drawHistory();
     });
 
     updateRadiusValue();
     drawChart();
-    drawHistory();
+
 
 
     _chart.click(e => {

@@ -28,6 +28,14 @@ function submit() {
 
 function drawHistory() {
     // var currentR = getValue('R');
+    let _chart = $("#myCanvas");
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    let _size = Number(_chart.attr("width").replace("px", ""));
+    let center = _size / 2;
+    let _radius = Number(document.getElementById('form:input_R').innerText);
+    console.log("radiusHistory:", _radius);
+    console.log("DrawingHistory!!!");
     var color;
     var currentR = Number(document.getElementById('form:input_R').innerText);
     var dataX = $("td.dataX");
@@ -39,22 +47,39 @@ function drawHistory() {
         var y = dataY[i];
         var r = dataR[i];
         var res = dataRes[i];
-        if (+r.innerHTML !== currentR) {
-            color = "black";
+        if (+r.innerHTML != currentR) {
+            ctx.fillStyle = "grey";
         } else {
             if (res.innerHTML.includes("In area")) {
-                color = "rgb(0, 255, 0)";
+                ctx.fillStyle = "rgb(0, 255, 0)";
             } else {
-                color = "rgb(255, 0, 0)";
+                ctx.fillStyle = "rgb(255, 0, 0)";
             }
         }
-        // drawPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML));
-        drawGenericPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML), color);
+        drawPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML));
 
-        console.log("historyX: " + parseFloat(x.innerHTML) + "historyY: " + parseFloat(y.innerHTML) + " historyRRR:" + _size )
+        // drawGenericPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML), color);
+
+        console.log("historyX: " + parseFloat(x.innerHTML) + " historyY: " + parseFloat(y.innerHTML))
 
     }
 }
+
+function drawPoint(x, y) {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    let canvasWidth = canvas.width;
+    let canvasHeight = canvas.height;
+
+    let divWidth = (canvasWidth / 2 - 10) / (5 + 1);
+    let divHeight = (canvasHeight / 2 - 10) / (5 + 1);
+
+    ctx.beginPath();
+    ctx.arc(canvasWidth / 2 + x * divWidth + 0.5, canvasHeight / 2 - y * divHeight + 0.5, 2, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+}
+
 
 function addColumn($tr, text) {
     $("<td/>", {
