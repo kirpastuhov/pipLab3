@@ -22,9 +22,9 @@ public class HitChecker {
             }
         } else {
             if (y > 0) {
-                result = y <= x + r / 2;
+                result = y <= x + r;
             } else {
-                result = x >= -r && y >= -r;
+                result = x >= -r / 2 && y >= -r;
             }
         }
         return new HitData(x, y, r, (System.nanoTime() - currentTime) / 1000000000d, System.currentTimeMillis(), result);

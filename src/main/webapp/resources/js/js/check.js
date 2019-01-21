@@ -48,17 +48,20 @@ function drawHistory() {
         var r = dataR[i];
         var res = dataRes[i];
         if (+r.innerHTML != currentR) {
-            ctx.fillStyle = "grey";
+            color = "grey";
         } else {
             if (res.innerHTML.includes("In area")) {
-                ctx.fillStyle = "rgb(0, 255, 0)";
+                color = "#28A745";
             } else {
-                ctx.fillStyle = "rgb(255, 0, 0)";
+                color = "#DC3545";
             }
         }
-        drawPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML));
+        // drawPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML));
 
-        // drawGenericPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML), color);
+        const draw_x = parseFloat(x.innerHTML) * 500 / 14 + _size / 2;
+        const draw_y = _size / 2 - parseFloat(y.innerHTML) * 500 / 14;
+
+        drawGenericPoint(draw_x, draw_y, color);
 
         console.log("historyX: " + parseFloat(x.innerHTML) + " historyY: " + parseFloat(y.innerHTML))
 
