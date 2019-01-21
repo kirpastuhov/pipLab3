@@ -24,7 +24,7 @@ public class InputData {
     public InputData(double x, double y, double r) {
         this.x = x;
         this.y = y;
-        this.r = r;
+        this.r = r / 10;
     }
 
     public InputData() {
@@ -34,10 +34,7 @@ public class InputData {
     public double getX() {
         return x;
     }
-    public void setX(double x) {
-        this.x = x;
-        System.out.println("!!!!!!   " + x);
-    }
+    public void setX(double x) { this.x = x; }
 
     public double getY() {
         return y;
@@ -47,7 +44,7 @@ public class InputData {
     }
 
     public double getR() {
-        return r;
+        return r / 10;
     }
     public void setR(double r) {
         this.r = r;

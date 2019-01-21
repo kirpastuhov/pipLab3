@@ -44,7 +44,7 @@
 
                                     <h:outputText value="#{InputBean.r / 10}" id="input_R"/>
                                     <ace:sliderEntry stepPercent="1" min="20" max="50" showLabels="false"
-                                                     value="#{InputBean.r}" length="200px" id="inputR">
+                                                     value="#{InputBean.r * 10}" length="200px" id="inputR">
                                         <ace:ajax render="input_R" event="slideEnd" execute="inputR"
                                                   onSuccess="updateRadiusValue(); drawChart();"/>
                                     </ace:sliderEntry>

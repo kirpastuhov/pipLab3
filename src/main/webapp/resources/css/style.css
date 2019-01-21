@@ -26,7 +26,7 @@ div.borderedDiv {
     text-align: center;
 }
 div#header {
-    background-color: #EEEEEE;
+    background-color: rgba(75, 76, 77,0.7);
     transition: background-color 3s ease;
     font: bold 24px monospace;
     min-width: 200px;
