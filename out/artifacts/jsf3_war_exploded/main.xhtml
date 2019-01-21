@@ -17,12 +17,24 @@
         <ui:define name="input">
             <div class="row">
                 <div class="col-sm">
-                    <div style="display: none;">
-                        <h:outputText value="#{InputBean.x}" id="hidden_x"/>
-                        <h:outputText value="#{InputBean.r}" id="hidden_r"/>
-                        <h:outputText value="#{InputBean.y}" id="hidden_y"/>
-                        <h:outputText value="#{HitData.pointInArea}" id="result_value"/>
-                    </div>
+                    <h:form id="hiddenForm" style="display: none;">
+                        <h:inputHidden id="hidden_x" value="#{InputBean.x}"/>
+                        <h:inputHidden id="hidden_y" value="#{InputBean.y}"/>
+                        <h:inputHidden id="hidden_r" value="#{InputBean.r}"/>
+                        <h:commandButton id="hidden_submit">
+                            <f:actionListener binding="${ResultsController.AddResult(InputBean)}"/>
+                            <f:ajax render="data" execute="hidden_x hidden_y hidden_r"
+                                    onevent="function (data) { if (data.status === 'success') { sendPointHidden(); } }"/>
+                        </h:commandButton>
+                    </h:form>
+
+                    <!--<div style="display: none;">-->
+                        <!--<h:outputText value="#{InputBean.x}" id="x_2"/>-->
+                        <!--<h:outputText value="#{InputBean.r}" id="r_2"/>-->
+                        <!--<h:outputText value="#{InputBean.y}" id="y_2"/>-->
+                        <!--<h:outputText value="#{ResultsController.hitsData}" id="result_value" var="o"/>-->
+                    <!--</div>-->
+
                     <h:form onsubmit="return false;" id="form">
                         <div class="row disable-selection">
                             <div class="form-group col-sm" style="text-align: center">
@@ -57,6 +69,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div style="text-align: center" class="disable-selection">
                             <h:commandButton class="btn-submit sharp" id="checkpoint"
                                              style="border:1px solid #dddddd;" value="Check the point">

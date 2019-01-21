@@ -13,7 +13,7 @@ function submit() {
     const y = Number(document.getElementById('form:inputY').value);
     const x = Number(document.getElementById('form:inputX').value);
 
-
+    _size = Number(_chart.attr("width").replace("px", ""));
 
 
 
@@ -51,7 +51,7 @@ function drawHistory() {
         // drawPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML));
         drawGenericPoint(parseFloat(x.innerHTML), parseFloat(y.innerHTML), color);
 
-        console.log("historyX: " + parseFloat(x.innerHTML) + "historyY: " + parseFloat(y.innerHTML) )
+        console.log("historyX: " + parseFloat(x.innerHTML) + "historyY: " + parseFloat(y.innerHTML) + " historyRRR:" + _size )
 
     }
 }
@@ -60,6 +60,13 @@ function addColumn($tr, text) {
     $("<td/>", {
         text: text
     }).appendTo($tr);
+}
+
+async function sendPointHidden() {
+    const chart_x = Number(document.getElementById('hiddenForm:hidden_x').value);
+    const chart_y = Number(document.getElementById('hiddenForm:hidden_y').value);
+
+    addPoint(chart_x, chart_y);
 }
 
 

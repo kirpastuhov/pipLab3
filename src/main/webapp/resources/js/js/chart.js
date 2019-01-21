@@ -48,8 +48,11 @@ function chartClick(e) {
     const chart_x = (x - 250) * 14 / 500;
     const chart_y = (250 - y) * 14 / 500;
 
-    document.getElementById("hidden_x").value = chart_x;
-    document.getElementById("hidden_y").value = chart_y;
+    document.getElementById("hiddenForm:hidden_x").value = chart_x;
+    document.getElementById("hiddenForm:hidden_y").value = chart_y;
+    document.getElementById("hiddenForm:hidden_r").value = _radius * 10;
+
+    document.getElementById("hiddenForm:hidden_submit").click();
 
     console.log("x2 = ", chart_x);
     console.log("y2 = ", chart_y);
