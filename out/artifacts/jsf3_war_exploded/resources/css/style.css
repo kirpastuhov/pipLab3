@@ -1,7 +1,6 @@
 html, body {
     font-size: 16px;
     background-color: #3c3d3e;
-    color: red;
 }
 
 .row{
@@ -26,11 +25,9 @@ div.borderedDiv {
     text-align: center;
 }
 div#header {
-    background-color: rgba(75, 76, 77,0.7);
-    transition: background-color 3s ease;
     font: bold 24px monospace;
     min-width: 200px;
-    width: 10%;
+    width: 50%;
     margin: auto;
     /*color: black;*/
 }
@@ -44,10 +41,7 @@ div#clock {
     display: table;
     width: 150px;
 }
-div#header:hover {
-    background-color: white;
-    transition: background-color 10s ease;
-}
+
 div#main {
     color: #dddddd;
     min-width: 1120px;
@@ -77,8 +71,9 @@ div#input {
     padding: 10px;
 }
 div#link {
-    width: 100px;
-    margin: 0 105px;
+
+    text-align: center;
+
 }
 div#alert {
     margin-top: 10px;

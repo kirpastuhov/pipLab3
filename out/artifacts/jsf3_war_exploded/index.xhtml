@@ -14,7 +14,7 @@
         </ui:define>
 
         <ui:define name="clocks">
-            <h:outputScript name="js/clocks.js"/>
+            <h:outputScript name="/js/js/clocks.js"/>
             <div class="borderedDiv" id="clock">
                 <span>hh</span>:<span>mm</span>:<span>ss</span>
             </div>
@@ -22,7 +22,7 @@
 
         <ui:define name="link">
             <h:form>
-                <h:commandButton action="mainPage" value="Main page"/>
+                <h:commandButton class="btn-submit sharp" style="border:1px solid #dddddd;" action="mainPage" value="Main page"/>
             </h:form>
         </ui:define>
     </ui:composition>

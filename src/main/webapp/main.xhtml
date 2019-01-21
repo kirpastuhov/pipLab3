@@ -28,12 +28,6 @@
                         </h:commandButton>
                     </h:form>
 
-                    <!--<div style="display: none;">-->
-                        <!--<h:outputText value="#{InputBean.x}" id="x_2"/>-->
-                        <!--<h:outputText value="#{InputBean.r}" id="r_2"/>-->
-                        <!--<h:outputText value="#{InputBean.y}" id="y_2"/>-->
-                        <!--<h:outputText value="#{ResultsController.hitsData}" id="result_value" var="o"/>-->
-                    <!--</div>-->
 
                     <h:form onsubmit="return false;" id="form">
                         <div class="row disable-selection">
@@ -74,7 +68,7 @@
                             <h:commandButton class="btn-submit sharp" id="checkpoint"
                                              style="border:1px solid #dddddd;" value="Check the point">
                                 <f:actionListener binding="${ResultsController.AddResult(InputBean)}"/>
-                                <f:ajax render="data" execute="input_R inputY inputX"
+                                <f:ajax render="data"
                                         onevent="function (data) { if (data.status === 'success') { sendPoint(); } }"/>
                             </h:commandButton>
                         </div>
@@ -101,6 +95,7 @@
                 <h:column>
                     <f:facet name="header">Result</f:facet>
                     #{o.pointInArea ? "In area" : "Not in area"}
+
                 </h:column>
                 <h:column>
                     <f:facet name="header">Time</f:facet>
@@ -108,6 +103,8 @@
                 </h:column>
             </h:dataTable>
         </ui:define>
+
+
         <div style="text-align: center" class="disable-selection">
             <ui:define name="link">
                 <h:form>

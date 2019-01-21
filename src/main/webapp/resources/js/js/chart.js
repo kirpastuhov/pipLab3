@@ -46,8 +46,8 @@ function chartClick(e) {
 
 
 
-    const chart_x = (x - 250) * 14 / 500;
-    const chart_y = (250 - y) * 14 / 500;
+    const chart_x = parseFloat((x - 250) * 14 / 500).toFixed(2);
+    const chart_y = parseFloat((250 - y) * 14 / 500).toFixed(2);
 
     document.getElementById("hiddenForm:hidden_x").value = chart_x;
     document.getElementById("hiddenForm:hidden_y").value = chart_y;
@@ -58,6 +58,6 @@ function chartClick(e) {
     console.log("x2 = ", chart_x);
     console.log("y2 = ", chart_y);
 
-    addPoint(chart_x, chart_y);
+    // addPoint(chart_x, chart_y);
 }
 

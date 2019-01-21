@@ -18,7 +18,7 @@ public class HitChecker {
                 result = false;
             }
             else {
-                result = x * x + y * y <= r * r;
+                result = x * x + y * y <= (r * r) / 4;
             }
         } else {
             if (y > 0) {
@@ -27,6 +27,8 @@ public class HitChecker {
                 result = x >= -r / 2 && y >= -r;
             }
         }
+
         return new HitData(x, y, r, (System.nanoTime() - currentTime) / 1000000000d, System.currentTimeMillis(), result);
     }
+
 }

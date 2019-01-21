@@ -12,28 +12,38 @@ import java.util.List;
 
 @ManagedBean(name = "ResultsController")
 @SessionScoped
-public class ResultsController {
+public class ResultsController
+{
     private EntityManager entityManager;
     private List<HitData> hitsData;
 
-    public ResultsController() {
+
+    public ResultsController()
+    {
         hitsData = new ArrayList<>();
         EntityManagerFactory hitDataUnit = Persistence.createEntityManagerFactory("HitDataUnit");
         entityManager = hitDataUnit.createEntityManager();
     }
 
-    public void AddResult(InputData inputData) {
+    public void AddResult(InputData inputData)
+    {
         HitChecker hitChecker = new HitChecker();
         HitData data = hitChecker.checkHit(inputData);
+        try
+        {
 
-        hitsData.add(data);
-        entityManager.getTransaction().begin();
-        entityManager.persist(data);
-        entityManager.getTransaction().commit();
-//        return "mainPage";
+            hitsData.add(data);
+            entityManager.getTransaction().begin();
+            entityManager.persist(data);
+            entityManager.getTransaction().commit();
+        } catch (Throwable ignored)
+        {
+
+        }
     }
 
-    public List<HitData> getHitsData() {
+    public List<HitData> getHitsData()
+    {
         return hitsData;
     }
 }
