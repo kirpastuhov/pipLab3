@@ -1,9 +1,9 @@
 $(document).ready(() => {
-    $("#checkpoint").unbind('click').click(() => {
+    document.getElementById('form:checkpoint').onclick = function() {
         console.log("check point button was pressed");
         submit();
         console.log("Submit was executed");
-    });
+    }
 });
 
 function submit() {
@@ -16,7 +16,7 @@ function submit() {
 
 
 
-    console.log(x);
+    console.log("SubmitXY: " + x);
     console.log(y);
 
     if (!checkFields(y)) return;
@@ -38,8 +38,8 @@ async function addPoint(chart_x, chart_y) {
 
     const draw_x = chart_x * 500 / 14 + _size / 2;
     const draw_y = _size / 2 - chart_y * 500 / 14;
-
-    drawGenericPoint(draw_x, draw_y, result ? '#28A745' : '#DC3545');
+    console.log("HEREE");
+    drawGenericPoint(draw_x, draw_y, '#DC3545');
 }
 
 
