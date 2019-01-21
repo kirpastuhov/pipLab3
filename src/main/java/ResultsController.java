@@ -22,7 +22,7 @@ public class ResultsController {
         entityManager = hitDataUnit.createEntityManager();
     }
 
-    public String AddResult(InputData inputData) {
+    public void AddResult(InputData inputData) {
         HitChecker hitChecker = new HitChecker();
         HitData data = hitChecker.checkHit(inputData);
 
@@ -30,8 +30,7 @@ public class ResultsController {
         entityManager.getTransaction().begin();
         entityManager.persist(data);
         entityManager.getTransaction().commit();
-
-        return "mainPage";
+//        return "mainPage";
     }
 
     public List<HitData> getHitsData() {

@@ -17,6 +17,8 @@ public class InputData {
     private double y;
     private double r = 50;
 
+
+
     private static final Integer[] xValues = new Integer[] {-4, -3,-2, -1, 0, 1, 2, 3, 4};
 
 
@@ -24,7 +26,7 @@ public class InputData {
     public InputData(double x, double y, double r) {
         this.x = x;
         this.y = y;
-        this.r = r / 10;
+        this.r = r;
     }
 
     public InputData() {

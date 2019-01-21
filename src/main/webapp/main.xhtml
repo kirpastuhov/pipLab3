@@ -17,6 +17,12 @@
         <ui:define name="input">
             <div class="row">
                 <div class="col-sm">
+                    <div style="display: none;">
+                        <h:outputText value="#{InputBean.x}" id="x_value_2"/>
+                        <h:outputText value="#{InputBean.r}" id="r_value_2"/>
+                        <h:outputText value="#{InputBean.y}" id="y_value"/>
+                        <h:outputText value="#{HitData.pointInArea}" id="result_value"/>
+                    </div>
                     <h:form onsubmit="return false;" id="form">
                         <div class="row disable-selection">
                             <div class="form-group col-sm" style="text-align: center">
@@ -42,9 +48,9 @@
                                 <label> R</label>
                                 <div class="form-group" style="text-align: center">
 
-                                    <h:outputText value="#{InputBean.r / 10}" id="input_R"/>
+                                    <h:outputText value="#{InputBean.r}" id="input_R"/>
                                     <ace:sliderEntry stepPercent="1" min="20" max="50" showLabels="false"
-                                                     value="#{InputBean.r * 10}" length="200px" id="inputR">
+                                                     value="#{InputBean.r}" length="200px" id="inputR">
                                         <ace:ajax render="input_R" event="slideEnd" execute="inputR"
                                                   onSuccess="updateRadiusValue(); drawChart();"/>
                                     </ace:sliderEntry>
@@ -52,9 +58,12 @@
                             </div>
                         </div>
                         <div style="text-align: center" class="disable-selection">
-                            <h:commandButton class="btn-submit sharp" id="submitButton"
-                                             action="#{ResultsController.AddResult(InputBean)}"
-                                             style="border:1px solid #dddddd;" value="Check the point"/>
+                            <h:commandButton class="btn-submit sharp" id="checkpoint"
+                                             style="border:1px solid #dddddd;" value="Check the point">
+                                <f:actionListener binding="${ResultsController.AddResult(InputBean)}"/>
+                                <f:ajax render="data" execute="input_R inputY inputX"
+                                        onevent="function (data) { if (data.status === 'success') { sendPoint(); } }"/>
+                            </h:commandButton>
                         </div>
                     </h:form>
                 </div>
@@ -87,14 +96,14 @@
             </h:dataTable>
         </ui:define>
         <div style="text-align: center" class="disable-selection">
-        <ui:define name="link">
-            <h:form>
+            <ui:define name="link">
+                <h:form>
 
                     <h:commandButton class="btn-submit sharp" id="backButton" action="startPage"
                                      style="border:1px solid #dddddd;" value="Start page"/>
 
-            </h:form>
-        </ui:define>
+                </h:form>
+            </ui:define>
         </div>
     </ui:composition>
 </h:body>

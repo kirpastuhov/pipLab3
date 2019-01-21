@@ -32,54 +32,61 @@ function addColumn($tr, text) {
 
 
 async function addPoint(chart_x, chart_y) {
-    const result = await sendRequest(chart_x, chart_y);
+    const result = $("#result_value").text();
 
-    console.log(result);
+    console.log(chart_x, chart_y, result);
 
-    const draw_x = chart_x * 500 / 14 + 250;
-    const draw_y = 250 - chart_y * 500 / 14;
+    const draw_x = chart_x * 500 / 14 + _size / 2;
+    const draw_y = _size / 2 - chart_y * 500 / 14;
 
-    drawGenericPoint(draw_x, draw_y, '#28A745');
+    drawGenericPoint(draw_x, draw_y, result ? '#28A745' : '#DC3545');
+}
+
+
+async function sendPoint() {
+    const chart_y = Number(document.getElementById('form:inputY').value);
+    const chart_x = Number(document.getElementById('form:inputX').value);
+    addPoint(chart_x, chart_y);
 }
 
 async function sendRequest(chart_x, chart_y) {
     const chart_r = Number($("#inputR").val());
     const $tr = $("<tr/>");
-    $.ajax({
-        url: 'ControllerServlet',
-        type: "post",
-        data: {
-            chart_x: chart_x, chart_y: chart_y, chart_r: chart_r
-        },
-        success:
+    // $.ajax({
+    //     url: 'ControllerServlet',
+    //     type: "post",
+    //     data: {
+    //         chart_x: chart_x, chart_y: chart_y, chart_r: chart_r
+    //     },
+        // success:
+        //
+        //     function (responseText) {
+        //         $.each(responseText, function (key, value) {
+        //             console.log(key);
+        //             if (key === "date") {
+        //                 addColumn($tr, value);
+        //                 console.log(value);
+        //             }
+        //             else if (key === "x") {
+        //                 addColumn($tr, value);
+        //                 console.log(value);
+        //             }
+        //             else if (key === "y") {
+        //                 addColumn($tr, value);
+        //                 console.log(value);
+        //             }
+        //            else  if (key === "r") {
+        //                 addColumn($tr, value);
+        //                 console.log(value);
+        //             }
+        //             else if (key === "isIn") {
+        //                 addColumn($tr, value);
+        //                 console.log(value);
+        //             }
+        //         });
+        //         $("#results").prepend($tr);
+        //
+        //     }
 
-            function (responseText) {
-                $.each(responseText, function (key, value) {
-                    console.log(key);
-                    if (key === "date") {
-                        addColumn($tr, value);
-                        console.log(value);
-                    }
-                    else if (key === "x") {
-                        addColumn($tr, value);
-                        console.log(value);
-                    }
-                    else if (key === "y") {
-                        addColumn($tr, value);
-                        console.log(value);
-                    }
-                   else  if (key === "r") {
-                        addColumn($tr, value);
-                        console.log(value);
-                    }
-                    else if (key === "isIn") {
-                        addColumn($tr, value);
-                        console.log(value);
-                    }
-                });
-                $("#results").prepend($tr);
-
-            }
-
-    });
+    // });
 }

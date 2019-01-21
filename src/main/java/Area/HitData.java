@@ -1,11 +1,13 @@
 package Area;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
+@ManagedBean(name = "HitData")
 public class HitData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
